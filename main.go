@@ -9,13 +9,12 @@ import (
 )
 
 // type Group struct {
-// 	gid  uint32
-// 	name string
-// 	errr error
+// 	Gid  string // group ID
+// 	Name string // group name
 // }
 
 func main() {
-	// var gg *Group
+	// var group Group
 	arr := os.Args[1:]
 	if len(arr) < 1 {
 		log.Fatal("CHeck your argss")
@@ -53,7 +52,8 @@ func main() {
 			fmt.Println("hard links number", stat.Nlink)
 			// Retrieve user and group IDs
 			uid := stat.Uid
-			// gid := stat.Gid
+			currentUser, _ := user.Current()
+			gid := currentUser.Gid
 
 			// Convert UID to username
 			user, err := user.LookupId(fmt.Sprint(uid))
@@ -62,6 +62,12 @@ func main() {
 				continue
 			}
 
+			// group, err := user.LookupGroupId(gid)
+			// if err != nil {
+			// 	log.Fatalf("Error looking up group: %v", err)
+			// }
+
+			// fmt.Printf("Found group: %+v\n", gid)
 			// Convert GID to group name
 			// group, err := user.LookupGroupId(fmt.Sprint(gid))
 			// gg, gg.errr := user.LookupGroup()
@@ -71,7 +77,7 @@ func main() {
 			// }
 
 			// Print file name, username, and group name
-			fmt.Printf("%s: user=%s, group=%s\n", entry.Name(), user.Username)
+			fmt.Printf("%s: user=%s, group=%s\n", entry.Name(), user.Username, gid)
 
 			fmt.Println("----------------------")
 
