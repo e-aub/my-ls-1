@@ -17,8 +17,13 @@ func main() {
 	}
 	command := arr[0]
 	flag := ""
-	if len(arr) > 1 {
+	// dirr := ""
+	// fileName := ""
+	if len(arr) == 2 {
 		flag = arr[1]
+		// dirr = arr[2]
+	}
+	if len(arr) == 3 {
 	}
 
 	entries := ls.CurrentDir(".")
@@ -49,7 +54,7 @@ func main() {
 				fmt.Print(lsa)
 			}
 			fmt.Println()
-		} else if flag == "-r" {
+		} else if flag == "-r" { // ls -r
 			Names := ls.Ls(entries)
 			RevNames := ls.Ls_r(Names)
 			for _, rev := range RevNames {
@@ -57,6 +62,8 @@ func main() {
 			}
 			fmt.Println()
 
+		} else if flag == "-R" {
+			ls.LS_R(".", entries)
 		} else {
 			fmt.Printf("%s: Command not found\n", command)
 		}
