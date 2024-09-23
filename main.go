@@ -56,28 +56,18 @@ func main() {
 			gid := currentUser.Gid
 
 			// Convert UID to username
-			user, err := user.LookupId(fmt.Sprint(uid))
+			usr, err := user.LookupId(fmt.Sprint(uid))
 			if err != nil {
 				fmt.Printf("Failed to lookup user for UID %d: %v\n", uid, err)
 				continue
 			}
 
-			// group, err := user.LookupGroupId(gid)
-			// if err != nil {
-			// 	log.Fatalf("Error looking up group: %v", err)
-			// }
-
-			// fmt.Printf("Found group: %+v\n", gid)
-			// Convert GID to group name
-			// group, err := user.LookupGroupId(fmt.Sprint(gid))
-			// gg, gg.errr := user.LookupGroup()
-			// if gErr != nil {
-			// 	fmt.Printf("Failed to lookup group for GID %d: %v\n", gid, err)
-			// 	continue
-			// }
-
+			group, err := user.LookupGroupId(gid)
+			if err != nil {
+				log.Fatalf("Error looking up group: %v", err)
+			}
 			// Print file name, username, and group name
-			fmt.Printf("%s: user=%s, group=%s\n", entry.Name(), user.Username, gid)
+			fmt.Printf("%s: user=%s, group=%s\n", entry.Name(), usr.Username, group.Name)
 
 			fmt.Println("----------------------")
 
