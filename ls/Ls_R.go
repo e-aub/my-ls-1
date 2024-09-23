@@ -12,15 +12,9 @@ func LS_R(dir string, entries []fs.DirEntry) {
 		if err != nil {
 			return err
 		}
-		for _, v := range entries {
-			if v.Name()[0] == '.' {
-				continue
-			}
-		}
-		// if p[0] == '.' {
-		// 	// continue
-		// }
+
 		fmt.Println(p)
+
 		return nil
 	})
 	if err != nil {
