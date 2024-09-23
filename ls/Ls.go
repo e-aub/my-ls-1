@@ -13,7 +13,7 @@ func Ls(entries []fs.DirEntry) []string {
 		}
 
 		if entry.IsDir() {
-			Name = append(Name, "\033[34m"+entry.Name()+"\033[0m"+"  ")
+			Name = append(Name, boldBlue+entry.Name()+reset+"  ")
 		} else {
 			Name = append(Name, entry.Name()+"  ")
 		}

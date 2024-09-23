@@ -11,3 +11,8 @@ type LS_l struct {
 	ModTime    string
 	Name       string
 }
+
+var (
+	boldBlue = "\033[1m\033[34m"
+	reset    = "\033[0m"
+)
