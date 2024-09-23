@@ -55,7 +55,7 @@ func Ls_l(entries []fs.DirEntry) []LS_l {
 			if entry.Name()[0] == '.' {
 				continue
 			}
-			entryName = "\033[34m" + entry.Name() + "\033[0m"
+			entryName = boldBlue + entry.Name() + reset
 		} else {
 			entryName = info.Name()
 		}
