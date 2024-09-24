@@ -43,7 +43,8 @@ func OneFlag(command, flag string, arr []string, entries []fs.DirEntry) {
 		} else if flag == "-R" {
 			LS_R("ls", entries)
 		} else {
-			fmt.Printf("%s: Command not found\n", command)
+			// fmt.Printf("%s: Command not found\n", command)
+			ParseFlags(entries, flag)
 		}
 	}
 }

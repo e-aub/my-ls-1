@@ -16,15 +16,19 @@ func main() {
 	}
 	command := arr[0]
 	flag := ""
-	// dirr := ""
-	// fileName := ""
 	if len(arr) == 2 {
 		flag = arr[1]
-		// dirr = arr[2]
 	}
 	entries := ls.CurrentDir(".")
-	ls.OneFlag(command, flag, arr, entries)
-	ls.CheckFlags(arr)
+	if len(flag) == 2 {
+		// the basic ls
+		ls.OneFlag(command, flag, arr, entries)
+	} else {
+		if len(flag) > 2 && flag[0] == '-' {
+			flag = flag[1:] // Remove the '-' character
+			ls.ParseFlags(entries, flag)
+		}
+	}
 }
 
 // if command == "ls" {
