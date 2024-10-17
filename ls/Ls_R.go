@@ -21,3 +21,6 @@ func LS_R(dir string, entries []fs.DirEntry) {
 		fmt.Println(err)
 	}
 }
+
+
+-t, -R, multiple flags
