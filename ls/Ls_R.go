@@ -22,5 +22,4 @@ func LS_R(dir string, entries []fs.DirEntry) {
 	}
 }
 
-
--t, -R, multiple flags
+// -t, -R, multiple flags

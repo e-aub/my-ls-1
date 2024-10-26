@@ -1,38 +1,32 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"os"
-
-	"go.mod/ls"
 )
 
+type Flags struct {
+	ModeOnlyPathsActivated bool
+	Paths                  []string
+	Dash_l                 bool
+	Dash_R                 bool
+	Dash_a                 bool
+	Dash_r                 bool
+	Dash_t                 bool
+	Dash_S                 bool
+	Dash_A                 bool
+}
+
 func main() {
-	// Check for command-line arguments
-	arr := os.Args[1:]
-	if len(arr) < 1 {
-		log.Fatal("Check your args")
-		return
-	}
-	command := arr[0]
-	flag := ""
-	if len(arr) == 2 {
-		flag = arr[1]
-	}
-	entries := ls.CurrentDir(".")
-	if len(flag) == 2 {
-		// the basic ls
-		ls.OneFlag(command, flag, arr, entries)
-	} else {
-		if len(flag) > 2 && flag[0] == '-' {
-			flag = flag[1:] // Remove the '-' character
-			ls.ParseFlags(entries, flag)
-		}
-	}
+	args := os.Args[1:]
+	flags := Flags{}
+	ArgsParser(&flags, &args)
+	fmt.Println(flags)
+
 }
 
 // if command == "ls" {
-// 	if command == "ls" && len(arr) == 1 { // ls
+// 	if command == "ls" && len(args) == 1 { // ls
 // 		list1 := ls.Ls(entries)
 // 		for _, ls := range list1 {
 // 			fmt.Print(ls)
