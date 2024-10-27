@@ -8,21 +8,35 @@ import (
 type Flags struct {
 	ModeOnlyPathsActivated bool
 	Paths                  []string
+	Dash_t                 bool
+	Dash_S                 bool
 	Dash_l                 bool
 	Dash_R                 bool
 	Dash_a                 bool
 	Dash_r                 bool
-	Dash_t                 bool
-	Dash_S                 bool
 	Dash_A                 bool
+}
+
+type Results struct {
+	Succeded []string
+	Fail     []string
+}
+
+type File struct {
+	Name string
 }
 
 func main() {
 	args := os.Args[1:]
 	flags := Flags{}
+	results := Results{}
 	ArgsParser(&flags, &args)
+	if len(flags.Paths) == 0 {
+		flags.Paths = append(flags.Paths, ".")
+	}
+	ExecuteFlags(&flags, &results)
 	fmt.Println(flags)
-
+	fmt.Println(results)
 }
 
 // if command == "ls" {

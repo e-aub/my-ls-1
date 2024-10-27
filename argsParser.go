@@ -21,14 +21,18 @@ func ArgsParser(flags *Flags, args *[]string) {
 					case "R":
 						flags.Dash_R = true
 					case "a":
+						flags.Dash_A = false
 						flags.Dash_a = true
 					case "r":
 						flags.Dash_r = true
 					case "t":
+						flags.Dash_S = false
 						flags.Dash_t = true
 					case "S":
+						flags.Dash_t = false
 						flags.Dash_S = true
 					case "A":
+						flags.Dash_a = false
 						flags.Dash_A = true
 					default:
 						log.Fatalf("--%s is not a valid option", flag)
