@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 )
 
@@ -35,8 +34,6 @@ func main() {
 		flags.Paths = append(flags.Paths, ".")
 	}
 	ExecuteFlags(&flags, &results)
-	fmt.Println(flags)
-	fmt.Println(results)
 }
 
 // if command == "ls" {
